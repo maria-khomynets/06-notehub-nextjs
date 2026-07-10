@@ -1,10 +1,10 @@
 // notes/page.tsx
 
-import { getNotes } from "@/lib/api";
+import { fetchNotes } from "@/lib/api";
 import NoteList from "@/components/NoteList/NoteList";
 
 const Notes = async () => {
-  const response = await getNotes();
+  const response = await fetchNotes();
 
   return (
     <section>
