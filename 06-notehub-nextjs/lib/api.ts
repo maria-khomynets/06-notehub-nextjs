@@ -12,7 +12,7 @@ interface FetchNotesParameters {
   page?: number;
 }
 const perPage: number = 12;
-const notesToken = `Bearer ${import.meta.env.VITE_NOTEHUB_TOKEN}`;
+const notesToken = `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`;
 export async function fetchNotes({
   search,
   page,
