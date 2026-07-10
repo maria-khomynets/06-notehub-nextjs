@@ -1,3 +1,4 @@
+"use client";
 import { createPortal } from "react-dom";
 import css from "./Modal.module.css";
 import { useEffect } from "react";
@@ -42,6 +43,6 @@ export default function Modal({ onClose, children }: ModalProps) {
         {children}
       </div>
     </div>,
-    document.getElementById("modal-root") as HTMLDivElement,
+    document.body,
   );
 }

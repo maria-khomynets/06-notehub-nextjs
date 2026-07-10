@@ -1,6 +1,7 @@
 // Усю клієнтську логіку(отримання списку нотаток
 //     за допомогою useQuery та їх відображення)
 //      винесіть в окремий файл компонента app / notes / Notes.client.tsx.
+"use client";
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
 import NoteList from "@/components/NoteList/NoteList";
 import SearchBox from "@/components/SearchBox/SearchBox";
@@ -15,7 +16,7 @@ import Loader from "@/components/Loader/Loader";
 import Pagination from "@/components/Pagination/Pagination";
 import { Toaster } from "react-hot-toast";
 import ErrorMessage from "@/components/ErrorMessage/ErrorMessage";
-export default function App() {
+export default function NotesClient() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [search, setSearch] = useState<string>("");
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);

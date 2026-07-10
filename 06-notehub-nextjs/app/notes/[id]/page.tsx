@@ -1,5 +1,5 @@
 // app/notes/[id]/page.tsx
-import NoteDetailsClient from "./Notes.client";
+import NoteDetailsClient from "./NoteDetails.client";
 
 import {
   QueryClient,
@@ -13,7 +13,7 @@ interface NoteDetailsPageProps {
   }>;
 }
 
-export default async function NoteDetails({ params }: NoteDetailsPageProps) {
+export default async function Notes({ params }: NoteDetailsPageProps) {
   const { id } = await params;
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({
@@ -22,7 +22,7 @@ export default async function NoteDetails({ params }: NoteDetailsPageProps) {
   });
   return (
     <HydrationBoundary state={dehydrate(queryClient)}>
-      <NoteDetailsClient />;
+      <NoteDetailsClient />
     </HydrationBoundary>
   );
 }
