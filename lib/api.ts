@@ -17,12 +17,14 @@ const notesToken = `Bearer ${process.env.NEXT_PUBLIC_NOTEHUB_TOKEN}`;
 export async function fetchNotes({
   search,
   page,
+  tag,
 }: FetchNotesParameters): Promise<NotesHttpResponse> {
   const parameters = {
     params: {
       search: search,
       page: page,
       perPage: perPage,
+      ...(tag && { tag }),
     },
     headers: {
       Authorization: notesToken,
