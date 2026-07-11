@@ -33,11 +33,7 @@ export default function NotesClient() {
     placeholderData: keepPreviousData,
   });
   const totalPages = data?.totalPages ?? 0;
-  console.log({
-    isLoading,
-    isError,
-    data,
-  });
+
   return (
     <div className={css.app}>
       <header className={css.toolbar}>
@@ -54,8 +50,8 @@ export default function NotesClient() {
         </button>
       </header>
       {isError && <ErrorMessage />}
-      {isLoading && <Loader />}
-      {isFetching && <Loader />}
+
+      {(isLoading || isFetching) && <Loader />}
       {!isLoading && !isError && data?.notes.length === 0 && (
         <p>No notes found.</p>
       )}
