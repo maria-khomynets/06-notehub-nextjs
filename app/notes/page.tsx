@@ -1,7 +1,3 @@
-// notes/page.tsx
-
-// app/notes/[id]/page.tsx
-
 import {
   QueryClient,
   HydrationBoundary,
@@ -9,7 +5,6 @@ import {
 } from "@tanstack/react-query";
 import { fetchNotes, queryKey } from "@/lib/api";
 import NotesClient from "./Notes.client";
-
 export default async function Notes() {
   const queryClient = new QueryClient();
   await queryClient.prefetchQuery({

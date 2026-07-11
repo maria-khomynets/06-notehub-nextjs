@@ -2,6 +2,7 @@
 //     за допомогою useQuery та їх відображення)
 //      винесіть в окремий файл компонента app / notes / Notes.client.tsx.
 "use client";
+
 import { useQuery, keepPreviousData } from "@tanstack/react-query";
 import NoteList from "@/components/NoteList/NoteList";
 import SearchBox from "@/components/SearchBox/SearchBox";
@@ -11,18 +12,17 @@ import { fetchNotes, queryKey } from "@/lib/api";
 import { useState } from "react";
 import Modal from "@/components/Modal/Modal";
 import NoteForm from "@/components/NoteForm/NoteForm";
-
 import Loader from "@/components/Loader/Loader";
 import Pagination from "@/components/Pagination/Pagination";
 import { Toaster } from "react-hot-toast";
 import ErrorMessage from "@/components/ErrorMessage/ErrorMessage";
+
 export default function NotesClient() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [search, setSearch] = useState<string>("");
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
   const openModal = () => setIsModalOpen(true);
   const closeModal = () => setIsModalOpen(false);
-
   const handleSearch = useDebouncedCallback((search: string) => {
     setSearch(search);
     setCurrentPage(1);
@@ -50,7 +50,6 @@ export default function NotesClient() {
         </button>
       </header>
       {isError && <ErrorMessage />}
-
       {(isLoading || isFetching) && <Loader />}
       {!isLoading && !isError && data?.notes.length === 0 && (
         <p>No notes found.</p>
